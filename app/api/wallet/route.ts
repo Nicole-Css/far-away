@@ -47,7 +47,7 @@ export async function POST(req: NextRequest): Promise<Response> {
    }
     const walletD = await String(newWallets[0]) || 'lo';
     const walletP = await String(embeddedWalletAddress!) || 'glop';
-    registerFont('../../../lib/Freedom.ttf' , { family: 'Freedom' });
+    registerFont('../../lib/Freedom.ttf' , { family: 'Freedom' });
     const urlimgs = await generate('Dynamic ETH Wallet: ' + walletD + ' and Privy ETH Wallet: ' + walletP  ,{fontSize:21, fontFamily: 'Freedom', bgColor: 'grey', textColor: 'red'})
     
     console.log('yes', urlimgs );
