@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createOrFindEmbeddedWalletForFid, createEmbeddedWallet } from '@/lib/embedded-wallet';
 import { ChainEnum } from "@dynamic-labs/sdk-api/models/ChainEnum";
 import { UserResponse } from "@dynamic-labs/sdk-api/models/UserResponse";
+import {registerFont} from 'canvas';
 import { generate } from 'text-to-image';
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -46,7 +47,8 @@ export async function POST(req: NextRequest): Promise<Response> {
    }
     const walletD = await String(newWallets[0]) || 'lo';
     const walletP = await String(embeddedWalletAddress!) || 'glop';
-    const urlimgs = await generate('Dynamic ETH Wallet: ' + walletD + ' and Privy ETH Wallet: ' + walletP  ,{fontSize:18, fontFamily: 'Arial', bgColor: 'grey', textColor: 'red'})
+    registerFont('@/lib/Freedom.ttf' , { family: 'Freedom' });
+    const urlimgs = await generate('Dynamic ETH Wallet: ' + walletD + ' and Privy ETH Wallet: ' + walletP  ,{fontSize:21, fontFamily: 'Freedom', bgColor: 'grey', textColor: 'red'})
     
     console.log('yes', urlimgs );
 
